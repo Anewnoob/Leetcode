@@ -1,0 +1,63 @@
+class Solution:
+    def update_state(self,live_number:int,current_state:int,new_board:List[List[int]]) -> List[List[int]]:
+        if current_state == 0:
+            if live_number == 3：
+                new_board[i][j] = 1
+            else:
+                new_board[i][j] = 0 
+        elif current_state == 1:    
+            if live_number < 2:
+                new_board[i][j] = 0
+            elif live_number >= 2:
+                new_board[i][j] = 1
+            else：
+                new_board[i][j] = 0
+        else:
+            raise ValueError
+        return new_board
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        new_board = List[List[int]]
+        for i,cells in enumerate(board):
+            for j,cell in enumerate(cells):
+                #live cell
+                    if i = 0:
+                        #左上
+                        if j == 0：
+                            live_number = board[i+1][j]+board[i][j+1]+board[i+1][j+1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        #右上
+                        elif j == len(cells)-1:
+                            live_number = board[i+1][j]+board[i][j-1]+board[i+1][j-1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        #中间
+                        else:
+                            live_number = board[i][j-1]+board[i][j+1]+board[i+1][j-1]+board[i+1][j]+board[i+1][j+1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                    elif i == len(board) - 1:
+                        #左下
+                        if j == 0：
+                            live_number = board[i-1][j]+board[i-1][j+1]+board[i][j+1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        #右下 
+                        elif j == len(cells)-1:
+                            live_number = board[i][j-1] + board[i-1][j-1]+board[i-1][j]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        #中间
+                        else:
+                            live_number = board[i-1][j]+board[i-1][j+1]+board[i][j+1]+board[i][j-1]\
+                            + board[i-1][j-1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                    else:
+                        if j == 0:
+                            live_number = board[i-1][j]+board[i-1][j+1]+board[i][j+1]+board[i+1][j]+board[i+1][j+1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        elif j == len(cells)-1:
+                            live_number =  board[i][j-1] + board[i-1][j-1]+board[i-1][j]+board[i+1][j]\
+                            +board[i+1][j-1]
+                            new_board = self.update_state(live_number,cell,new_board)
+                        else:
+                            live_number=board[i-1][j]+board[i-1][j+1]+board[i][j+1]+board[i][j-1]+board[i-1][j-1]\
+                            +board[i+1][j]+board[i+1][j-1]+board[i+1][j+1]
