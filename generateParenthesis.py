@@ -17,3 +17,23 @@ class Solution:
         dfs_method(singleParenthesis,n,n)
         return Parenthesis_list
         
+        
+    #DP 动态规划
+    def generateParenthesis_v1(self, n: int) -> List[str]:
+        if n == 0:
+            return []
+
+        dp = [None for _ in range(n + 1)]
+        dp[0] = [""]
+
+        for i in range(1, n + 1):
+            cur = []
+            for j in range(i):
+                left = dp[j]
+                right = dp[i - j - 1]
+                for s1 in left:
+                    for s2 in right:
+                        cur.append("(" + s1 + ")" + s2)
+            dp[i] = cur
+        return dp[n]
+
