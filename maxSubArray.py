@@ -16,3 +16,10 @@ class Solution:
                 dp[i] = nums[i]
             max_sum = max(max_sum,dp[i])
         return max_sum
+   
+#more better
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        for i in range(1, len(nums)):
+            nums[i] += max(nums[i - 1], 0)
+        return max(nums)
