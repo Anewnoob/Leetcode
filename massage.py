@@ -18,3 +18,21 @@ class Solution:
             dp[i][1] = dp[i-1][0] + nums[i]
 
         return max(dp[-1][0],dp[-1][1])
+    
+#better
+class Solution:
+    def massage(self, nums: List[int]) -> int:
+
+        if not nums:
+            return 0
+        #init
+        dp0 = 0
+        dp1 = nums[0]
+
+        for i in range(1,len(nums)):
+            tdp0 = max(dp0,dp1)
+            tdp1 = dp0 + nums[i]
+            dp0 = tdp0
+            dp1 = tdp1
+
+        return max(dp0,dp1)
