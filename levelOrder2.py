@@ -13,11 +13,11 @@ class Solution:
         if not root: return []
         res, deque = [],collections.deque([root])
         while deque:
-            tmp_deque = collections.deque()
+            tmp_deque = []
             for _ in range(len(deque)):
                 node = deque.popleft()
                 tmp_deque.append(node.val)
                 if node.left: deque.append(node.left)
                 if node.right: deque.append(node.right)
-            res.append(list(tmp_deque))
+            res.append(tmp_deque)
         return res
