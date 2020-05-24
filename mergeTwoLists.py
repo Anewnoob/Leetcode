@@ -42,4 +42,21 @@ class Solution:
             m.next = ListNode(q.val) 
             m = m.next
             q = q.next
-        return head        
+        return head      
+    
+    
+#better 
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+
+        head = ListNode(None)
+        m = head
+        while l1 is not None and l2 is not None:
+            if l1.val <= l2.val:
+                m.next = ListNode(l1.val)
+                l1 = l1.next
+            else:
+                m.next = ListNode(l2.val)
+                l2 = l2.next
+            m = m.next
+        m.next = l1 if l1 is not None else l2
+        return head.next   
