@@ -32,17 +32,16 @@ class Solution:
             q = q.next 
         return new_head.next
 
-    #DFS
-        # def dfs(head):
-        #     if not head: return None
-        #     if head in visited:
-        #         return visited[head]
-        #     # 创建新结点
-        #     copy = Node(head.val, None, None)
-        #     visited[head] = copy
-        #     copy.next = dfs(head.next)
-        #     copy.random = dfs(head.random)
-        #     return copy
-        # visited = {}
-        # return dfs(head)
+#         #DFS
+#         def dfs(head):
+#             if not head: return head
+#             if head in visited:
+#                 return visited[head]
+#             node = Node(head.val,None,None)
+#             visited[head] = node
+#             node.next = dfs(head.next)
+#             node.random = dfs(head.random)
+#             return node
+#         visited = {}
+#         return dfs(head)
         
