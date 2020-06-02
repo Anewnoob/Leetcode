@@ -33,5 +33,15 @@ class Solution:
             queue.append((left.left, right.right))
             queue.append((left.right, right.left))
         return True
-
-
+    
+        #dfs
+        def dfs(node_left,node_right):
+            if node_left is None and node_right is None: return True
+            elif node_left is None or node_right is None: return False 
+            else:
+                if node_left.val == node_right.val:
+                    return dfs(node_left.left,node_right.right) and dfs(node_left.right,node_right.left)
+                else:
+                    return False
+        if root is None: return True
+        return dfs(root.left,root.right)
