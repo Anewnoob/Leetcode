@@ -12,3 +12,6 @@ class Solution:
             else:
                 return False
         return True
+    
+   #better 
+        return True if str(x)==str(x)[::-1] else False
