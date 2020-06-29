@@ -14,3 +14,18 @@ class Solution:
             pre_v = nums[j] 
             j += 1
         return len(nums)
+    
+#移除等于某个具体值    
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        if not nums: return 0
+        len_nums = len(nums)
+
+        j = 0
+        for i in range(len_nums):
+            if nums[j] == val:
+                del nums[j]
+                j -= 1
+            j += 1
+        return len(nums)
+            
