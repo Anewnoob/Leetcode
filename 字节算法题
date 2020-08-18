@@ -55,12 +55,16 @@ def f(a):
             count += 1
             i += 1
             j -= 1
+            while abs(a[i-1]) == abs(a[i]): i += 1
+            while abs(a[j+1]) == abs(a[j]): j -= 1
         elif abs(a[i]) < abs(a[j]) and i < j:
             count += 1
             j -= 1
+            while abs(a[j+1]) == abs(a[j]): j -= 1 
         else:
             count += 1
             i += 1
+            while abs(a[i-1]) == abs(a[i]): i += 1
     if i == j : return count+1
     if i > j :return count
 
